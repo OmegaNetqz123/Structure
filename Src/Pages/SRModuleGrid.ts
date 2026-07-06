@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import *as data from "../test-data/Credentials.json"
-import { visible40, visible60 } from "./BasePage";
+import { visible40, visible60, waitForProcessingToFinish} from "./BasePage";
 import path from "path";
 
 export class SRModuleGrid {
@@ -13,6 +13,7 @@ export class SRModuleGrid {
     private readonly SRModuleHeading: Locator;
     private readonly SearcCriteriaExpandIcon: Locator;
     private readonly SCMNameTxt: Locator;
+    private readonly SCKeywordtxt:Locator;
     private readonly SearchBtn: Locator;
     private readonly displayHeading: Locator;
     private readonly ModuleSlct: Locator;
@@ -33,6 +34,7 @@ export class SRModuleGrid {
         //Search Criteria
         this.SearcCriteriaExpandIcon = this.page.locator('[class="accordion-head accordion-head2"] .plusminus2');
         this.SCMNameTxt = this.page.locator('#txtModuleName');
+        this.SCKeywordtxt = this.page.locator('#txtSearchTags');
         this.SearchBtn = this.page.locator('[class="add-docuform bn-top"] .buttons-row [data-ng-click="btnGoClick()"]');
         this.displayHeading = this.page.locator('#moduleCount');
         this.ModuleSlct = this.page.locator('#AllSRDModules tr');
@@ -53,7 +55,15 @@ export class SRModuleGrid {
         await visible40(this.SRModuleHeading);
 
     }
+    async SearchModules() {
+        await this.SCMNameTxt.fill(data.SRModule.Name);
+        await this.SCKeywordtxt.fill(data.SRModule.Keyword);
+        await this.SearchBtn.click();
+        await waitForProcessingToFinish(this.page);
+        const availableModules = this.ModuleSlct.count();
+        return availableModules;
 
+    }
     async SRModuleView() {
 
     }

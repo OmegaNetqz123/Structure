@@ -186,8 +186,8 @@ export class srModules {
                     if (!(await checkbox.isChecked())) {
                         await familyRow.locator('.checkmark').click();
                     }
-                    await this.SlctProductOkBtn.click();
                 }
+                await this.SlctProductOkBtn.click();
             }
             if (row.tradeName) {
                 const TNtoSelect = row.tradeName.split(',').map(v => v.trim());
@@ -207,11 +207,10 @@ export class srModules {
                         await tradeRow.locator('.checkmark').click();
                     }
 
-                    await this.SlctProductOkBtn.click();
                 }
-
-
+                 await this.SlctProductOkBtn.click();
             }
+            
             // Save & Check-In action
             await visible40(this.Save_CheckINBtn);
             await waitForProcessingToFinish(this.page)
