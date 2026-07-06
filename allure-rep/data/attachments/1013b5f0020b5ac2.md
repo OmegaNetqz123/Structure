@@ -1,0 +1,567 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: CM\SRModule.spec.ts >> Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria
+- Location: Src\tests\CM\SRModule.spec.ts:9:5
+
+# Error details
+
+```
+Test timeout of 60000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - textbox [ref=e4]
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - heading [level=1] [ref=e7]:
+        - generic [ref=e8]:
+          - img [ref=e10]
+          - img [ref=e11]
+      - generic [ref=e12]:
+        - list:
+          - listitem [ref=e13]:
+            - generic [ref=e14]: Thursday, July 2, 2026
+          - listitem [ref=e15]:
+            - list:
+              - listitem [ref=e16] [cursor=pointer]:
+                - img "manuser" [ref=e18]
+                - link "Vani sai Tejaswi" [ref=e19]:
+                  - /url: "#"
+                  - text: Vani sai Tejaswi
+          - listitem [ref=e21]:
+            - list:
+              - listitem [ref=e22] [cursor=pointer]:
+                - link "Organization autotest" [ref=e23]:
+                  - /url: "#"
+                  - text: Organization
+                  - strong [ref=e24]: autotest
+          - listitem [ref=e25]:
+            - list:
+              - listitem [ref=e26] [cursor=pointer]:
+                - link "Primary Site Redx" [ref=e27]:
+                  - /url: "#"
+                  - text: Primary Site
+                  - strong [ref=e28]: Redx
+          - listitem [ref=e29]:
+            - list:
+              - listitem [ref=e30] [cursor=pointer]:
+                - link "Setup" [ref=e31]:
+                  - /url: "#"
+                  - img [ref=e32]
+          - listitem [ref=e33]:
+            - link "Notifications&Reminders" [ref=e34] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e35]
+          - listitem [ref=e37]:
+            - link "Help" [ref=e38] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e39]
+          - listitem [ref=e40]:
+            - list:
+              - listitem [ref=e41] [cursor=pointer]:
+                - link "Sign Out" [ref=e42]:
+                  - /url: "#"
+                  - img [ref=e43]
+    - navigation [ref=e44]:
+      - list [ref=e45]:
+        - listitem [ref=e46]:
+          - link [ref=e47] [cursor=pointer]:
+            - /url: Home.aspx
+            - img [ref=e48]
+        - listitem [ref=e49]:
+          - link "Inbox" [ref=e50] [cursor=pointer]:
+            - /url: MyInbox.aspx
+        - listitem [ref=e51]:
+          - link "Case Management" [ref=e52] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e53]:
+          - link "Case Query" [ref=e54] [cursor=pointer]:
+            - /url: CaseQuery.aspx
+        - listitem [ref=e55]:
+          - link "Utilities" [ref=e56] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e57]:
+          - link "Transmissions" [ref=e58] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e59]:
+          - link "Browse Content" [ref=e60] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e61]:
+          - link "QA" [ref=e62] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e63]:
+          - link "Analytics" [ref=e64] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e65]:
+        - link "Recent Cases" [ref=e67] [cursor=pointer]:
+          - /url: "#"
+        - generic [ref=e68]: + New Case
+  - text: "* * *"
+  - paragraph [ref=e71]:
+    - img "leftarrow" [ref=e72]
+    - text: Processing...
+  - generic [ref=e75]:
+    - generic [ref=e76]: Notifications & Reminders
+    - generic [ref=e77]:
+      - list:
+        - listitem [ref=e78]:
+          - link "Cancel" [ref=e79] [cursor=pointer]:
+            - /url: "#"
+    - generic [ref=e80]:
+      - list [ref=e81]:
+        - listitem [ref=e82]:
+          - link [ref=e83] [cursor=pointer]:
+            - /url: "#tabinr1"
+        - listitem [ref=e84]:
+          - link [ref=e85] [cursor=pointer]:
+            - /url: "#tabinr2"
+      - generic [ref=e89]:
+        - list:
+          - listitem
+  - generic [ref=e92]:
+    - generic [ref=e93]: Notification
+    - generic [ref=e94]:
+      - list:
+        - listitem [ref=e95]:
+          - link "Dismiss" [ref=e96] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e97]:
+          - link "Cancel" [ref=e98] [cursor=pointer]:
+            - /url: "#"
+    - generic [ref=e99]:
+      - generic [ref=e100]:
+        - generic [ref=e101]:
+          - strong [ref=e103]: "ID :"
+          - generic:
+            - link:
+              - /url: "#"
+        - strong [ref=e106]: "Date & Time :"
+        - strong [ref=e109]: "Organization :"
+        - strong [ref=e112]: "Site :"
+        - generic [ref=e113]:
+          - strong
+      - generic [ref=e114]:
+        - generic [ref=e115]: Message
+        - textbox [ref=e116]
+  - generic [ref=e119]:
+    - generic [ref=e120]: Reminders
+    - generic [ref=e121]:
+      - list:
+        - listitem
+        - listitem
+        - listitem [ref=e122]:
+          - link "Clear" [ref=e123] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e124]:
+          - link "Cancel" [ref=e125] [cursor=pointer]:
+            - /url: "#"
+    - generic [ref=e126]:
+      - generic [ref=e128]:
+        - strong [ref=e131]: "Organization :"
+        - strong [ref=e134]: "Site :"
+        - strong [ref=e137]: "Category :"
+        - strong [ref=e140]: "Scheduled On :"
+        - strong [ref=e143]: "Status :"
+        - strong [ref=e146]: "Overdue :"
+      - generic [ref=e147]:
+        - strong [ref=e149]: Message
+        - textbox [ref=e150]
+  - paragraph [ref=e153]:
+    - img "leftarrow" [ref=e154]
+    - text: Processing...
+  - generic [ref=e155]:
+    - generic [ref=e156]:
+      - generic [ref=e157]: New SR Module
+      - generic [ref=e158]:
+        - list:
+          - listitem [ref=e159]:
+            - generic [ref=e160]: "Note: Date and Time are displayed in (UTC+05:30)"
+          - listitem [ref=e161]:
+            - link "Help" [ref=e162] [cursor=pointer]:
+              - /url: "#"
+              - img "Help" [ref=e163]
+          - listitem [ref=e164]:
+            - link "Save" [ref=e165] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e166]:
+            - link "Save & Check-In" [ref=e167] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e168]:
+            - generic [ref=e169]: Close/Cancel
+    - generic [ref=e170]:
+      - generic [ref=e172]:
+        - generic [ref=e173]:
+          - generic [ref=e174]: Module Name *
+          - textbox [ref=e175]: Module2
+        - generic [ref=e176]:
+          - generic [ref=e177]: Module ID
+          - textbox [ref=e178]: ID002
+        - generic [ref=e179]:
+          - generic [ref=e180]: Module Category
+          - combobox [ref=e181]:
+            - option "--Select--"
+            - option "Auto 1"
+            - option "Auto1768980250560" [selected]
+            - option "Auto1768985208552"
+            - option "Auto1769086970910"
+            - option "Auto1769087172378"
+            - option "Auto1769605275764"
+            - option "Auto1769605631945"
+            - option "Auto1770036197110"
+            - option "Auto1770036219037"
+            - option "Auto1770036238837"
+            - option "Auto1770036259806"
+            - option "Auto1770036280664"
+            - option "Auto1770036360504"
+            - option "Auto1770036377070"
+            - option "Auto1770036395943"
+            - option "Auto1770036417425"
+            - option "Auto1770036436138"
+            - option "Auto1770036476160"
+            - option "Auto1770036512589"
+            - option "Auto1770036536338"
+            - option "Auto1770036564280"
+            - option "Auto1770036593548"
+            - option "Auto1770036628625"
+            - option "Auto1770036656725"
+            - option "Auto1770036680946"
+            - option "Auto1773059361470"
+            - option "Auto1774420769346"
+            - option "Auto1774853983567"
+            - option "Auto1774854012149"
+            - option "Auto1774854042090"
+            - option "Auto1774854108772"
+            - option "Auto1774854199983"
+            - option "Auto1775460065348"
+            - option "Auto1775460105651"
+            - option "Auto1775460144799"
+            - option "Auto1775460212739"
+            - option "Auto1775460279362"
+            - option "Auto1775460299185"
+            - option "Auto1775460320684"
+            - option "Auto1775460343501"
+            - option "Auto1775463436910"
+            - option "Auto1775463488309"
+            - option "Auto1776851069079"
+            - option "Auto1776851094629"
+            - option "Auto1776851129081"
+            - option "Auto1776851184441"
+            - option "Auto1776851209958"
+            - option "Auto1776851245840"
+            - option "Auto1776851363170"
+            - option "Auto1776851434668"
+            - option "Auto1776851479960"
+            - option "Auto1776851550132"
+            - option "Auto1776851578032"
+            - option "Auto1776851724190"
+            - option "Auto1776851750718"
+            - option "Auto1776851838896"
+            - option "Auto1776851882596"
+            - option "Auto1776851914552"
+            - option "Auto1776851940896"
+            - option "Auto1776852011991"
+            - option "Auto1776852082277"
+            - option "Auto1776852595916"
+            - option "Auto1776852648825"
+            - option "Auto1776852858243"
+            - option "Auto1776853088399"
+            - option "Auto1776853338874"
+            - option "Auto1776853427311"
+            - option "Auto1776853468661"
+            - option "Auto1776936606525"
+            - option "module"
+        - generic [ref=e183] [cursor=pointer]:
+          - text: Approval Required
+          - checkbox "Approval Required"
+      - generic [ref=e185]:
+        - list [ref=e186]:
+          - listitem [ref=e187]:
+            - link "General Attributes" [ref=e188] [cursor=pointer]:
+              - /url: "#tab1"
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - generic [ref=e192]:
+              - list [ref=e193]:
+                - listitem [ref=e194]:
+                  - generic [ref=e195]: "File:"
+                - listitem:
+                  - link:
+                    - /url: "#"
+                - listitem [ref=e196]:
+                  - link "Upload" [ref=e198] [cursor=pointer]:
+                    - /url: "#"
+                    - img "Upload" [ref=e199]
+                  - generic [ref=e200]:
+                    - generic:
+                      - generic [ref=e201]:
+                        - strong [ref=e203]:
+                          - generic [ref=e204]: Upload File
+                        - generic "Browse" [ref=e205] [cursor=pointer]:
+                          - generic [ref=e206]:
+                            - img "upload" [ref=e207]
+                            - generic [ref=e208]: Browse
+                            - button "upload Browse" [ref=e209]
+                      - generic [ref=e210]: Doc1 version1.docx X
+                    - generic [ref=e211]:
+                      - link "Cancel" [ref=e212] [cursor=pointer]:
+                        - /url: "#"
+                      - link "Go" [active] [ref=e213] [cursor=pointer]:
+                        - /url: "#"
+                - listitem [ref=e214]:
+                  - link "Document Compose" [ref=e216] [cursor=pointer]:
+                    - /url: "#"
+                    - img "Document Compose" [ref=e217]
+                  - text: "*"
+                - text: "*"
+                - listitem
+              - generic [ref=e219]: "File Format:"
+            - list [ref=e220]:
+              - listitem [ref=e221]:
+                - generic [ref=e222] [cursor=pointer]:
+                  - text: Auto Update and Publish all Response Documents when module is published
+                  - checkbox "Auto Update and Publish all Response Documents when module is published"
+            - list:
+              - listitem [ref=e224]:
+                - generic [ref=e225] [cursor=pointer]:
+                  - text: Minor Version
+                  - radio "Minor Version" [disabled]
+              - listitem [ref=e227]:
+                - generic [ref=e228] [cursor=pointer]:
+                  - text: Major Version
+                  - radio "Major Version" [disabled]
+            - list [ref=e230]:
+              - listitem [ref=e231]:
+                - generic [ref=e232] [cursor=pointer]:
+                  - text: Auto Update and Check-In all Response Documents when module is published
+                  - checkbox "Auto Update and Check-In all Response Documents when module is published"
+            - list:
+              - listitem [ref=e234]:
+                - generic [ref=e235] [cursor=pointer]:
+                  - text: Minor Version
+                  - radio "Minor Version" [disabled]
+              - listitem [ref=e237]:
+                - generic [ref=e238] [cursor=pointer]:
+                  - text: Major Version
+                  - radio "Major Version" [disabled]
+            - list [ref=e240]:
+              - listitem [ref=e241]:
+                - generic [ref=e242] [cursor=pointer]:
+                  - text: Auto Expire and Archive all Response Documents when module is archived
+                  - checkbox "Auto Expire and Archive all Response Documents when module is archived"
+            - generic [ref=e244]:
+              - generic [ref=e245]: Keywords
+              - textbox [ref=e246]
+          - generic [ref=e248]:
+            - list [ref=e249]:
+              - listitem [ref=e250]:
+                - generic [ref=e251] [cursor=pointer]:
+                  - text: Product Specific
+                  - checkbox "Product Specific"
+              - listitem
+            - generic [ref=e253]:
+              - list
+    - generic [ref=e255]:
+      - generic [ref=e256]:
+        - generic [ref=e257]: Setup New Review
+        - generic [ref=e258]:
+          - list:
+            - listitem [ref=e259]:
+              - link "Save & Close" [ref=e260] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e261]:
+              - link "Cancel" [ref=e262] [cursor=pointer]:
+                - /url: "#"
+      - generic [ref=e264]:
+        - generic [ref=e265]:
+          - generic [ref=e266]: Review Title *
+          - combobox [ref=e267]
+        - generic [ref=e268]:
+          - generic [ref=e269]: Custom Title(if other)
+          - textbox [ref=e270]
+        - generic [ref=e271]:
+          - generic [ref=e272]:
+            - generic [ref=e273]: Planned End Date *
+            - textbox [ref=e275]
+          - link "Custom Email Message" [ref=e277] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e279] [cursor=pointer]:
+          - text: Non Amendable Review
+          - checkbox "Non Amendable Review"
+        - generic [ref=e281]:
+          - generic [ref=e282]: Review Description
+          - textbox [ref=e283]
+        - generic [ref=e284]:
+          - generic [ref=e285]: Reviewers
+          - list [ref=e286]
+    - generic [ref=e288]:
+      - generic [ref=e289]:
+        - generic [ref=e290]: Edit Review
+        - generic [ref=e291]:
+          - list:
+            - listitem [ref=e292]:
+              - link "Save" [ref=e293] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e294]:
+              - link "Cancel" [ref=e295] [cursor=pointer]:
+                - /url: "#"
+      - generic [ref=e297]:
+        - generic [ref=e298]:
+          - generic [ref=e299]: Review Title *
+          - combobox [ref=e300]:
+            - option "Other" [selected]
+        - generic [ref=e301]:
+          - generic [ref=e302]: Custom Title(if other)
+          - textbox [ref=e303]
+        - generic [ref=e304]:
+          - generic [ref=e305]:
+            - generic [ref=e306]: Planned End Date *
+            - textbox [ref=e307] [cursor=pointer]:
+              - /placeholder: "-Select"
+          - link "Custom Email Message" [ref=e309] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e311] [cursor=pointer]:
+          - text: Non Amendable Review
+          - checkbox "Non Amendable Review"
+        - generic [ref=e313]:
+          - generic [ref=e314]: Review Description
+          - textbox [ref=e315]
+        - generic [ref=e316]:
+          - generic [ref=e317]: Reviewers
+          - list [ref=e318]:
+            - listitem [ref=e319]:
+              - generic [ref=e320] [cursor=pointer]:
+                - text: Robert P.
+                - checkbox "Robert P." [checked]
+            - listitem [ref=e322]:
+              - generic [ref=e323] [cursor=pointer]:
+                - text: Srini V.
+                - checkbox "Srini V." [checked]
+            - listitem [ref=e325]:
+              - generic [ref=e326] [cursor=pointer]:
+                - text: Kim R.
+                - checkbox "Kim R."
+            - listitem [ref=e328]:
+              - generic [ref=e329] [cursor=pointer]:
+                - text: Stacy Bark
+                - checkbox "Stacy Bark"
+    - generic [ref=e333]:
+      - generic [ref=e334]: Change Owner
+      - generic [ref=e335]:
+        - list:
+          - listitem [ref=e336]:
+            - link "Confirm & Close" [ref=e337] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e338]:
+            - link "Cancel" [ref=e339] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e340]:
+        - generic [ref=e341]:
+          - generic [ref=e342]: Current Name
+          - textbox [disabled] [ref=e343]
+        - generic [ref=e344]:
+          - generic [ref=e345]: New Owner *
+          - combobox [ref=e346]
+        - generic [ref=e347]:
+          - generic [ref=e348]: Reason for Change Owner *
+          - textbox [ref=e349]
+    - generic [ref=e352]:
+      - generic [ref=e353]: Review Details
+      - generic [ref=e354]:
+        - list:
+          - listitem [ref=e355]:
+            - link "Close" [ref=e356] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e357]:
+        - table [ref=e358]:
+          - rowgroup [ref=e359]:
+            - row "Reviewer Status Started On Completed On Comments" [ref=e360]:
+              - columnheader "Reviewer" [ref=e361]
+              - columnheader "Status" [ref=e362]
+              - columnheader "Started On" [ref=e363]
+              - columnheader "Completed On" [ref=e364]
+              - columnheader "Comments" [ref=e365]
+        - generic [ref=e366]:
+          - table:
+            - rowgroup
+    - generic [ref=e368]:
+      - generic [ref=e369]:
+        - generic [ref=e370]: Preview
+        - link "add" [ref=e371] [cursor=pointer]:
+          - /url: "#"
+          - img "add" [ref=e372]
+      - iframe [ref=e374]:
+        
+    - generic [ref=e376]:
+      - generic [ref=e377]:
+        - generic [ref=e378]: Editing
+        - generic [ref=e379]:
+          - list:
+            - listitem [ref=e380]:
+              - link "Close" [ref=e381] [cursor=pointer]:
+                - /url: "#"
+      - iframe [ref=e383]:
+        
+    - generic [ref=e386]:
+      - generic [ref=e387]: Review Document
+      - generic [ref=e388]:
+        - list:
+          - listitem [ref=e389]:
+            - link "OK" [ref=e390] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e391]:
+            - link "Close" [ref=e392] [cursor=pointer]:
+              - /url: "#"
+    - generic [ref=e395]:
+      - generic [ref=e396]:
+        - generic [ref=e397]: Review
+        - generic [ref=e398]:
+          - list:
+            - listitem [ref=e399]:
+              - link "Close" [ref=e400] [cursor=pointer]:
+                - /url: "#"
+      - iframe [ref=e402]:
+        
+    - generic [ref=e404]:
+      - generic [ref=e405]:
+        - generic [ref=e406]: SR Module Check-In
+        - generic [ref=e407]:
+          - list:
+            - listitem [ref=e408]:
+              - link "Confirm Check-In" [ref=e409] [cursor=pointer]:
+                - /url: "#"
+      - generic [ref=e410]:
+        - list [ref=e411]:
+          - listitem [ref=e412]: Check-In as
+        - generic [ref=e413]:
+          - generic [ref=e414]:
+            - generic [ref=e415]: Author
+            - combobox [ref=e416]:
+              - option "--Select--" [selected]
+              - option "1517"
+              - option "AB"
+              - option "BS"
+              - option "Pooja"
+              - option "Pooja.N"
+              - option "SIRISHA"
+              - option "Shiva"
+              - option "Shiva.v"
+              - option "THA"
+              - option "Vamsi"
+              - option "auto0009"
+              - option "auto00101"
+              - option "mi@scimaxisr.com"
+              - option "monika"
+              - option "tharun.rasakapuram@scimaxglobal.com"
+          - generic [ref=e417]:
+            - generic [ref=e418]: Reason for Check-In *
+            - textbox [ref=e419]
+```

@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","60120","Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria","chromium","2026-07-03","broken","2026-07-03","","CM\SRModule.spec.ts","",""

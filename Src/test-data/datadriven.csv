@@ -1,0 +1,7 @@
+ModuleName,ModuleID,ModuleCategory,Approval,FileName,AutoUP_PuRSPCheck,AutoUP_PuRSPCheckMinor,AutoUP_PuRSPCheck_Major,AutoUP_CIRESPCheck,AutoUP_CIRESPCheck_Minor,AutoUP_CIRESPCheck_Major,AutoExp_ArcRSPCheck,Keywords,ProductSpecific,itemName,tradeName
+Module1,ID001,Auto 1,Yes,Doc1 version1.docx,Yes,,Yes,,,,Yes,Omega Keyword,Yes,,Azithro (US)
+Module2,ID002,Auto1768980250560,,( ).pdf,,,,Yes,,Yes,,Omega Keyword,Yes,ProAuto1,
+Module3,,module,,Doc2 version2.docx,,,,,,,Yes,,Yes,Dolo2,
+Module4,,,,Preview.pdf,,,,,,,,,Yes,Automation hHTdv,
+Module5,,,,ISI Document (2).pdf,,,,,,,,,Yes,,TraAuto1 (US)
+Module6,ID001,Auto 1,Yes,Preview.pdf,Yes,,Yes,,,,Yes,Omega Keyword,Yes,Dolo2,

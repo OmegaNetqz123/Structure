@@ -1,0 +1,97 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: CM\SRModule.spec.ts >> Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria
+- Location: Src\tests\CM\SRModule.spec.ts:9:5
+
+# Error details
+
+```
+Error: locator.waitFor: Target page, context or browser has been closed
+```
+
+# Test source
+
+```ts
+  1  | import { Locator, Page } from "@playwright/test"
+  2  | 
+  3  | // 1. Date Fields Selection Function
+  4  | 
+  5  | export async function DateSelection(year: string, month: string, date: string, page: Page) {
+  6  |     await page.locator('.ui-datepicker-year').selectOption({ label: year });
+  7  |     await page.locator('.ui-datepicker-month').selectOption({ label: month });
+  8  | 
+  9  |     const allCells: Locator[] = await page.locator('.ui-datepicker-calendar tbody td a').all();
+  10 |     let dateFound = false;
+  11 | 
+  12 |     for (const cell of allCells) {
+  13 |         const cellText = (await cell.innerText()).trim();
+  14 |         if (cellText === date) {
+  15 |             await cell.click();
+  16 |             dateFound = true;
+  17 |             break;
+  18 |         }
+  19 |     }
+  20 | 
+  21 |     if (!dateFound) {
+  22 |         throw new Error(`DateSelection: Date "${date}" not found in calendar for ${month} ${year}.`);
+  23 |     }
+  24 | 
+  25 | }
+  26 | 
+  27 | // 2. Dropdown fields selection function
+  28 | 
+  29 | export async function Dprowdown(field: Locator, lab: string) {
+  30 |     await field.selectOption({ label: lab });
+  31 | }
+  32 | 
+  33 | //3. Country field selection function from Push Head(Only top 100 values can be selected)
+  34 | 
+  35 | export async function Country(field: Locator, list: Locator, lab: string) {
+  36 |     await field.dblclick();
+  37 |     await list.getByText(lab).click();
+  38 | }
+  39 | 
+  40 | //4. Trade Name selection function from Product Search Overlay
+  41 | 
+  42 | export async function TradeNameSelection(field: Locator, name: string,
+  43 |     slct: Locator, list: Locator) {
+  44 | 
+  45 |     await field.click();
+  46 |     await list.getByText(name, { exact: true }).click();
+  47 |     await slct.click();
+  48 | 
+  49 | }
+  50 | 
+  51 | 
+  52 | //5. For Processing wait Times
+  53 | 
+  54 | export async function visible40(ele:Locator) {
+> 55 |     await ele.waitFor({state:"visible", timeout:40000})
+     |               ^ Error: locator.waitFor: Target page, context or browser has been closed
+  56 | }
+  57 | 
+  58 | export async function visible60(ele:Locator) {
+  59 |     await ele.waitFor({state:"visible", timeout:60000})
+  60 | }
+  61 | 
+  62 | export async function waitForProcessingToFinish(page: Page) {
+  63 |     const processing = page.getByText('Processing...');
+  64 | 
+  65 |     // Wait until none of the matched elements are visible
+  66 |     await page.waitForFunction(() => {
+  67 |         const els = Array.from(document.querySelectorAll('span'))
+  68 |             .filter(el => el.textContent?.trim() === 'Processing...');
+  69 |         return els.every(el => {
+  70 |             const style = window.getComputedStyle(el);
+  71 |             return style.display === 'none' || style.visibility === 'hidden' || el.offsetParent === null;
+  72 |         });
+  73 |     }, { timeout: 60000 });
+  74 | }
+  75 | 
+```
