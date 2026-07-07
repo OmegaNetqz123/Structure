@@ -60,8 +60,7 @@ export async function visible60(ele:Locator) {
 }
 
 export async function waitForProcessingToFinish(page: Page) {
-    const processing = page.getByText('Processing...');
-
+    //const processing = page.getByText('Processing...');
     // Wait until none of the matched elements are visible
     await page.waitForFunction(() => {
         const els = Array.from(document.querySelectorAll('span'))
