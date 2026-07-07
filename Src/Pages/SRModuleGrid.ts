@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import *as data from "../test-data/Credentials.json"
 import { visible40, visible60, waitForProcessingToFinish } from "./BasePage";
 import path from "path";
@@ -33,30 +33,35 @@ export class SRModuleGrid {
     private readonly AscendingIcon: Locator;
     private readonly DescendingIcon: Locator;
     private readonly ModuleGridTable: Locator;
-    private readonly SCModCatDD:Locator;
-    private readonly SCTNPushHead:Locator;
-    private readonly SCModIDTxt:Locator;
-    private readonly SCKeywordTxt:Locator;
-    private readonly SCStatusDD:Locator;
-    private readonly SCDateCriteriaDD:Locator;
-    private readonly SCDateRangeDD:Locator;
-    private readonly SCCustomStartDate:Locator;
-    private readonly SCCustomEndDate:Locator;
-    private readonly ClearBtn:Locator;
-    private readonly ViewAllBtn:Locator;
-    private readonly SaveBtn:Locator;
-    private readonly WrapTxtIcon:Locator;
-    private readonly CustomizeTableIcon:Locator;
-    private readonly SelectedTable:Locator;
-    private readonly SelectedTableColumns:Locator;
-    private readonly SelectedColumnsMoveDown:Locator;
-    private readonly SelectedColumnsMoveUp:Locator;
-    private readonly SelectedColumnsMovetoBottum:Locator;
-    private readonly SelectedColumnsMovetoUp:Locator;
-    private readonly ChooseClmsBtn:Locator;
-    private readonly AvailableClmslist:Locator;
-    private readonly ToCheckClmsList:Locator;
-    private readonly ToValidateCheckclmnsList:Locator;
+    private readonly SCModCatDD: Locator;
+    private readonly SCTNPushHead: Locator;
+    private readonly SCModIDTxt: Locator;
+    private readonly SCKeywordTxt: Locator;
+    private readonly SCStatusDD: Locator;
+    private readonly SCDateCriteriaDD: Locator;
+    private readonly SCDateRangeDD: Locator;
+    private readonly SCCustomStartDate: Locator;
+    private readonly SCCustomEndDate: Locator;
+    private readonly ClearBtn: Locator;
+    private readonly ViewAllBtn: Locator;
+    private readonly SaveBtn: Locator;
+    private readonly WrapTxtIcon: Locator;
+    private readonly CustomizeTableIcon: Locator;
+    private readonly SelectedTable: Locator;
+    private readonly SelectedTableColumns: Locator;
+    private readonly SelectedColumnsMoveDown: Locator;
+    private readonly SelectedColumnsMoveUp: Locator;
+    private readonly SelectedColumnsMovetoBottum: Locator;
+    private readonly SelectedColumnsMovetoUp: Locator;
+    private readonly ChooseClmsBtn: Locator;
+    private readonly AvailableClmslist: Locator;
+    private readonly ToCheckClmsList: Locator;
+    private readonly CancelBtn: Locator;
+    private readonly Save_CloseBtn: Locator;
+    private readonly RestBtn: Locator;
+    private readonly DisplayColumnsTxt: Locator;
+    private readonly Selectallchk:Locator;
+    private readonly ToCheckSelectallChk: Locator;
 
 
 
@@ -80,7 +85,7 @@ export class SRModuleGrid {
         this.SCModIDTxt = this.page.locator('#txtModuleCode');
         this.SCKeywordTxt = this.page.locator('#txtSearchTags');
         this.SCStatusDD = this.page.locator('#ddlStatus');
-        this.SCDateCriteriaDD= this.page.locator('#ddlDtCriteria');
+        this.SCDateCriteriaDD = this.page.locator('#ddlDtCriteria');
         this.SCDateRangeDD = this.page.locator('ddlDtRange');
         this.SCCustomStartDate = this.page.locator('#txtCustomStartDate');
         this.SCCustomEndDate = this.page.locator('#txtCustomEndDate');
@@ -114,21 +119,55 @@ export class SRModuleGrid {
         this.AscendingIcon = this.page.locator('#imgA');
         this.DescendingIcon = this.page.locator('#imgB');
         this.WrapTxtIcon = this.page.locator('[title="Wrap Columns"]');
+        this.DisplayColumnsTxt = this.page.locator('.dynamicColumn:first-child th[data-ng-class="ShowFullColumnData"]');
         this.CustomizeTableIcon = this.page.locator('[title="Customize Table"]');
-        this.SelectedTable =this.page.locator('.clearFix div'); //List
+        this.SelectedTable = this.page.locator('.clearFix div'); //List
         this.SelectedTableColumns = this.SelectedTable.locator('.inputrow-60 label');  //List
         this.SelectedColumnsMoveDown = this.SelectedTable.locator('.inputrow-40 a img[title="Move Down"]')  //List
         this.SelectedColumnsMoveUp = this.SelectedTable.locator('.inputrow-40 a img[title="Move Up"]');  //List
         this.SelectedColumnsMovetoBottum = this.SelectedTable.locator('.inputrow-40 a img[title="Move to Bottom"]');  //List
         this.SelectedColumnsMovetoUp = this.SelectedTable.locator('.inputrow-40 a img[title="Move to Top"]');  //List
         this.ChooseClmsBtn = this.page.locator('[data-ng-click="OpenAvaColumns()"]');
-        this.AvailableClmslist = this.page.locator('.inputrow-80 label'); //List
-        this.ToCheckClmsList = this.page.locator('.inputrow-80 label span');
-        this.ToValidateCheckclmnsList = this.page.locator('')
-        
+        this.AvailableClmslist = this.page.locator('.smoothSrcollbar .inputrow-80 label'); //List
+        this.ToCheckClmsList = this.page.locator('.smoothSrcollbar .inputrow-80 label span');
+        this.Selectallchk=this.page.locator('[class="cbx-main pull-left"] span');
+        this.ToCheckSelectallChk = this.page.locator('#chkUnkSelectAll');
+        this.CancelBtn=this.page.locator('[data-ng-click="CancelCustomise()"]');
+        this.Save_CloseBtn= this.page.locator('[data-ng-click="OkCustomiseColumn()"]');
+        this.RestBtn = this.page.locator('[data-ng-click="ResetCustomiseColumn()"]');
+
 
     }
 
+    //Validating Grid headings based on Customizing Table
+    async CustomizationTableComparision() {
+        await this.SRModuleCreation();
+        await this.CustomizeTableIcon.click();
+        const selectedTableNames = (await this.SelectedTableColumns.allInnerTexts()).map(t => t.trim());
+        await this.CancelBtn.click();
+        const displayColmnNames = (await this.DisplayColumnsTxt.allInnerTexts()).map(t => t.trim());
+
+        for (const value of selectedTableNames) {
+           await expect(displayColmnNames).toContain(value);
+        }
+        await expect (displayColmnNames.length).toEqual(selectedTableNames.length);
+    }
+
+    async CustomizationtableSelectionComparision(){
+        await this.SRModuleCreation();
+        await this.CustomizationTableComparision();
+        await this.CustomizeTableIcon.click();
+        await this.ChooseClmsBtn.click();
+
+
+
+    }
+
+
+
+
+
+    // Search Method
     async SRModuleSearchField(moduleName: string = data.SRModule.Name, moduleID?: string, keyword: string = data.SRModule.Keyword) {
         await this.SearcCriteriaExpandIcon.click();
         await this.SCMNameTxt.fill(moduleName);
