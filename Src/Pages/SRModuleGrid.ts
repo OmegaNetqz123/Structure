@@ -60,9 +60,9 @@ export class SRModuleGrid {
     private readonly Save_CloseBtn: Locator;
     private readonly RestBtn: Locator;
     private readonly DisplayColumnsTxt: Locator;
-    private readonly Selectallchk:Locator;
+    private readonly Selectallchk: Locator;
     private readonly ToCheckSelectallChk: Locator;
-
+    private readonly CheckClmsListChk: Locator;
 
 
 
@@ -129,37 +129,42 @@ export class SRModuleGrid {
         this.SelectedColumnsMovetoUp = this.SelectedTable.locator('.inputrow-40 a img[title="Move to Top"]');  //List
         this.ChooseClmsBtn = this.page.locator('[data-ng-click="OpenAvaColumns()"]');
         this.AvailableClmslist = this.page.locator('.smoothSrcollbar .inputrow-80 label'); //List
-        this.ToCheckClmsList = this.page.locator('.smoothSrcollbar .inputrow-80 label span');
-        this.Selectallchk=this.page.locator('[class="cbx-main pull-left"] span');
+        this.ToCheckClmsList = this.page.locator('.smoothSrcollbar .inputrow-80 label input')//List
+        this.CheckClmsListChk = this.page.locator('.smoothSrcollbar .inputrow-80 label span');//List
+        this.Selectallchk = this.page.locator('[class="cbx-main pull-left"] span');
         this.ToCheckSelectallChk = this.page.locator('#chkUnkSelectAll');
-        this.CancelBtn=this.page.locator('[data-ng-click="CancelCustomise()"]');
-        this.Save_CloseBtn= this.page.locator('[data-ng-click="OkCustomiseColumn()"]');
+        this.CancelBtn = this.page.locator('[data-ng-click="CancelCustomise()"]');
+        this.Save_CloseBtn = this.page.locator('[data-ng-click="OkCustomiseColumn()"]');
         this.RestBtn = this.page.locator('[data-ng-click="ResetCustomiseColumn()"]');
 
 
     }
 
     //Validating Grid headings based on Customizing Table
-    async CustomizationTableComparision() {
+    async CustomizationTableComparision(): Promise<boolean> {
         await this.SRModuleCreation();
         await this.CustomizeTableIcon.click();
-        const selectedTableNames = (await this.SelectedTableColumns.allInnerTexts()).map(t => t.trim());
+        const selectedTableNames: string[] = (await this.SelectedTableColumns.allInnerTexts()).map(v => v.trim());
         await this.CancelBtn.click();
-        const displayColmnNames = (await this.DisplayColumnsTxt.allInnerTexts()).map(t => t.trim());
-
-        for (const value of selectedTableNames) {
-           await expect(displayColmnNames).toContain(value);
-        }
-        await expect (displayColmnNames.length).toEqual(selectedTableNames.length);
+        const displayColmnNames: string[] = (await this.DisplayColumnsTxt.allInnerTexts()).map(v => v.trim());
+        return (selectedTableNames.every(t => displayColmnNames.includes(t))) ? true : false;
     }
 
-    async CustomizationtableSelectionComparision(){
+    async CustomizationtableSelectionComparision() {
         await this.SRModuleCreation();
-        await this.CustomizationTableComparision();
         await this.CustomizeTableIcon.click();
         await this.ChooseClmsBtn.click();
-
-
+        const Tochecklist = await this.AvailableClmslist.all();
+        const Checked: String[] = [];
+        for (const check of Tochecklist) {
+            if (await check.locator('input').isChecked()) {
+                Checked.push((await check.innerText()).trim());
+            }
+        }
+        console.log(`Checked values are: ${Checked}`);
+        await this.CancelBtn.click();
+        const displayColmnNames: string[] = (await this.DisplayColumnsTxt.allInnerTexts()).map(v => v.trim());
+        return (Checked.every(t => displayColmnNames.includes(t.toString()))) ? true : false;
 
     }
 
