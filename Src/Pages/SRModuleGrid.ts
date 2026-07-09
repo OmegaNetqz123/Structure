@@ -2,6 +2,25 @@ import { expect, Locator, Page } from "@playwright/test";
 import *as data from "../test-data/Credentials.json"
 import { visible40, visible60, waitForProcessingToFinish } from "./BasePage";
 import path from "path";
+import { Testdatacalls } from "../Utils/dataProviderMethods";
+
+let DDT: Testdatacalls;
+export interface CustomizeGridRow {
+    ModuleName?: string;
+    LatestVersion?: string;
+    ModuleCategory?: string;
+    Status?: string;
+    CICO?: string;
+    COUser?: string;
+    SystemModuleID?: string;
+    CreatedDate?: string;
+    LastModifiedDate?: string;
+    ApprovedDate?: string;
+    PublishedDate?: string;
+    ArchivedDate?: string;
+    ModuleID?: string;
+
+}
 
 export class SRModuleGrid {
 
@@ -63,8 +82,8 @@ export class SRModuleGrid {
     private readonly Selectallchk: Locator;
     private readonly ToCheckSelectallChk: Locator;
     private readonly CheckClmsListChk: Locator;
-
-
+    private readonly ChooseClmnCancelBtn: Locator;
+    private readonly ChooseClmnProceedBtn: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -127,16 +146,19 @@ export class SRModuleGrid {
         this.SelectedColumnsMoveUp = this.SelectedTable.locator('.inputrow-40 a img[title="Move Up"]');  //List
         this.SelectedColumnsMovetoBottum = this.SelectedTable.locator('.inputrow-40 a img[title="Move to Bottom"]');  //List
         this.SelectedColumnsMovetoUp = this.SelectedTable.locator('.inputrow-40 a img[title="Move to Top"]');  //List
+        this.CancelBtn = this.page.locator('[data-ng-click="CancelCustomise()"]');
+        this.Save_CloseBtn = this.page.locator('[data-ng-click="OkCustomiseColumn()"]');
+        this.RestBtn = this.page.locator('[data-ng-click="ResetCustomiseColumn()"]');
+
+        // Choose Column overlay
         this.ChooseClmsBtn = this.page.locator('[data-ng-click="OpenAvaColumns()"]');
         this.AvailableClmslist = this.page.locator('.smoothSrcollbar .inputrow-80 label'); //List
         this.ToCheckClmsList = this.page.locator('.smoothSrcollbar .inputrow-80 label input')//List
         this.CheckClmsListChk = this.page.locator('.smoothSrcollbar .inputrow-80 label span');//List
         this.Selectallchk = this.page.locator('[class="cbx-main pull-left"] span');
         this.ToCheckSelectallChk = this.page.locator('#chkUnkSelectAll');
-        this.CancelBtn = this.page.locator('[data-ng-click="CancelCustomise()"]');
-        this.Save_CloseBtn = this.page.locator('[data-ng-click="OkCustomiseColumn()"]');
-        this.RestBtn = this.page.locator('[data-ng-click="ResetCustomiseColumn()"]');
-
+        this.ChooseClmnCancelBtn = this.page.locator('[data-ng-click="CancelChoose()"]');
+        this.ChooseClmnProceedBtn = this.page.locator('[data-ng-click="SpecificOkClick()"]');
 
     }
 
@@ -150,7 +172,7 @@ export class SRModuleGrid {
         return (selectedTableNames.every(t => displayColmnNames.includes(t))) ? true : false;
     }
 
-    async CustomizationtableSelectionComparision() {
+    async CustomizationtableDefaultComparision() {
         await this.SRModuleCreation();
         await this.CustomizeTableIcon.click();
         await this.ChooseClmsBtn.click();
@@ -162,15 +184,53 @@ export class SRModuleGrid {
             }
         }
         console.log(`Checked values are: ${Checked}`);
+        await this.ChooseClmnCancelBtn.click();
         await this.CancelBtn.click();
         const displayColmnNames: string[] = (await this.DisplayColumnsTxt.allInnerTexts()).map(v => v.trim());
         return (Checked.every(t => displayColmnNames.includes(t.toString()))) ? true : false;
 
     }
 
+    async CustomizeGridDDT() {
+        DDT = new Testdatacalls();
+        const rows = await DDT.CSVreader<CustomizeGridRow>("datadrivenCustomizationGrid.csv");
+        await this.GearIcon.waitFor({ state: "visible", timeout: 60000 })
+        await this.SRModuleCreation();
+        for (const row of rows) {
+            await this.CustomizationtableSelectionComparision(row);
+        }
+
+    }
+    async CustomizationtableSelectionComparision(row: CustomizeGridRow) {
+
+        await this.CustomizeTableIcon.click();
+        await this.ChooseClmsBtn.click();
+        const availablelist = await this.AvailableClmslist.all();
+        for (const clms of availablelist) {
+            const label = (await clms.innerText()).trim();
+            const key = label.replace(/\s+/g, '') as keyof CustomizeGridRow; // "Module Name" -> "ModuleName"
+            const desiredValue = row[key];
+            if (desiredValue === undefined) continue;
+            const shouldBeChecked = desiredValue.toString().trim().toLowerCase() === 'yes';
+            const checkbox = clms.locator('span');
+            const isCurrentlyChecked = await checkbox.isChecked();
+            if (shouldBeChecked && !isCurrentlyChecked) {
+                await checkbox.check();
+            }
+            else if (!shouldBeChecked && isCurrentlyChecked) {
+                await checkbox.uncheck();
+            }
+
+        }
+        await this.ChooseClmnProceedBtn.click();
+        await this.Save_CloseBtn.click();
+        await this.CustomizationtableDefaultComparision();
+
+    }
 
 
 
+    //******************************************************************************************* */
 
     // Search Method
     async SRModuleSearchField(moduleName: string = data.SRModule.Name, moduleID?: string, keyword: string = data.SRModule.Keyword) {
