@@ -19,7 +19,8 @@ test('Verify with creating a SR MOdule with mandatory data and publiching it thr
         // const ActualResult1:boolean = await SRG.CustomizationtableDefaultComparision();
         // expect(ActualResult).toBeTruthy();
         // expect(ActualResult1).toBeTruthy();
-        SRG.CustomizeGridDDT();
+        const ActualResult2:boolean =await SRG.CustomizeGridDDT();
+        await expect (ActualResult2).toBeTruthy();
         await LoggingIn.Signingout();
 
     })

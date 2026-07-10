@@ -5,6 +5,7 @@ import path from "path";
 import { Testdatacalls } from "../Utils/dataProviderMethods";
 
 let DDT: Testdatacalls;
+
 export interface CustomizeGridRow {
     ModuleName?: string;
     LatestVersion?: string;
@@ -84,6 +85,7 @@ export class SRModuleGrid {
     private readonly CheckClmsListChk: Locator;
     private readonly ChooseClmnCancelBtn: Locator;
     private readonly ChooseClmnProceedBtn: Locator;
+    private readonly ModuleSlct: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -117,7 +119,7 @@ export class SRModuleGrid {
 
         //Displaying Grid
         this.displayHeading = this.page.locator('#moduleCount');
-        //this.ModuleSlct = this.page.locator('#AllSRDModules tr');
+        this.ModuleSlct = this.page.locator('#AllSRDModules');
 
         //Displaying Grid Actions
         this.ModuleActionIcon = this.page.locator('#AllSRDModules td [title="Actions"]');
@@ -173,7 +175,7 @@ export class SRModuleGrid {
     }
 
     async CustomizationtableDefaultComparision() {
-        await this.SRModuleCreation();
+        //await this.SRModuleCreation();
         await this.CustomizeTableIcon.click();
         await this.ChooseClmsBtn.click();
         const Tochecklist = await this.AvailableClmslist.all();
@@ -192,39 +194,57 @@ export class SRModuleGrid {
     }
 
     async CustomizeGridDDT() {
-        DDT = new Testdatacalls();
-        const rows = await DDT.CSVreader<CustomizeGridRow>("datadrivenCustomizationGrid.csv");
+
         await this.GearIcon.waitFor({ state: "visible", timeout: 60000 })
         await this.SRModuleCreation();
+        await visible40(this.ModuleSlct);
+        DDT = new Testdatacalls();
+        const rows = await DDT.CSVreader<CustomizeGridRow>("datadrivenCustomizationGrid.csv");
+        const results: boolean[] = [];
         for (const row of rows) {
-            await this.CustomizationtableSelectionComparision(row);
+           const result =  await this.CustomizationtableSelectionComparision(row);
+           results.push(result);
         }
+        return results.every(r => r === true);
 
     }
     async CustomizationtableSelectionComparision(row: CustomizeGridRow) {
 
         await this.CustomizeTableIcon.click();
+        await visible40(this.ChooseClmsBtn);
         await this.ChooseClmsBtn.click();
+        await visible40(this.ChooseClmnProceedBtn);
         const availablelist = await this.AvailableClmslist.all();
         for (const clms of availablelist) {
             const label = (await clms.innerText()).trim();
             const key = label.replace(/\s+/g, '') as keyof CustomizeGridRow; // "Module Name" -> "ModuleName"
             const desiredValue = row[key];
             if (desiredValue === undefined) continue;
-            const shouldBeChecked = desiredValue.toString().trim().toLowerCase() === 'yes';
+            const shouldBeCheckedDDT = desiredValue.toString().trim().toLowerCase() === 'yes';
             const checkbox = clms.locator('span');
             const isCurrentlyChecked = await checkbox.isChecked();
-            if (shouldBeChecked && !isCurrentlyChecked) {
+            if (shouldBeCheckedDDT && !isCurrentlyChecked) {
                 await checkbox.check();
             }
-            else if (!shouldBeChecked && isCurrentlyChecked) {
+            else if (!shouldBeCheckedDDT && isCurrentlyChecked) {
                 await checkbox.uncheck();
             }
 
         }
+
+        const Tochecklist = await this.AvailableClmslist.all();
+        const Checked: String[] = [];
+        for (const check of Tochecklist) {
+            if (await check.locator('input').isChecked()) {
+                Checked.push((await check.innerText()).trim());
+            }
+        }
+
+        console.log(`Checked values are: ${Checked}`);
         await this.ChooseClmnProceedBtn.click();
         await this.Save_CloseBtn.click();
-        await this.CustomizationtableDefaultComparision();
+        const displayColmnNames: string[] = (await this.DisplayColumnsTxt.allInnerTexts()).map(v => v.trim());
+        return (Checked.every(t => displayColmnNames.includes(t.toString()))) ? true : false;
 
     }
 
