@@ -16,11 +16,15 @@ test(`Verify with creating a SR MOdule with mandatory data and publiching it thr
         await LoggingIn.gotoLogInPage();
         await LoggingIn.LogIntoApplication(data["Credentials 2"].UserID, data["Credentials 2"].Password);
         const SRG = new SRModuleGrid(page);
-        const ActualResult: boolean = await SRG.CustomizationTableComparision();
-        const ActualResult1:boolean = await SRG.CustomizationtableDefaultComparision();
-        expect(ActualResult).toBeTruthy();
-        expect(ActualResult1).toBeTruthy();
-        const ActualResult2:boolean =await SRG.CustomizeGridDDT();
-        expect (ActualResult2).toBeTruthy();
+        const SearchNames = await SRG.AvailableSearchFields();
+        const DisableSearchNames = await SRG.AvailableDisabledSearchFields();
+        expect (SearchNames.length).toEqual(11);
+        expect (DisableSearchNames).toEqual(expect.arrayContaining(["Date Range","Start Date","End Date"]));
+        // const ActualResult: boolean = await SRG.CustomizationTableComparision();
+        // const ActualResult1:boolean = await SRG.CustomizationtableDefaultComparision();
+        // expect(ActualResult).toBeTruthy();
+        // expect(ActualResult1).toBeTruthy();
+        // const ActualResult2:boolean =await SRG.CustomizeGridDDT();
+        // expect (ActualResult2).toBeTruthy();
         await LoggingIn.Signingout();
     })

@@ -14,7 +14,7 @@ export class Testdatacalls {
     }
 
 
-     CSVreader<T = any>(filename: string): T[] {
+    CSVreader<T = any>(filename: string): T[] {
         const filePath = path.join(__dirname, '..', 'test-data', filename);
         const filecontent = fs.readFileSync(filePath, 'utf-8');
         const records = parse(filecontent, { columns: true, skipEmptyLines: true }) as T[];

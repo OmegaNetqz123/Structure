@@ -4,6 +4,7 @@ import { visible40, visible60, waitForProcessingToFinish } from "./BasePage";
 import path from "path";
 import { Testdatacalls } from "../Utils/dataProviderMethods";
 
+
 let DDT: Testdatacalls;
 
 export interface CustomizeGridRow {
@@ -20,6 +21,22 @@ export interface CustomizeGridRow {
     PublishedDate?: string;
     ArchivedDate?: string;
     ModuleID?: string;
+
+}
+
+
+export interface searchCriteria {
+    ModuleName?: string;
+    SystemModuleID?: string;
+    ModuleCategory?: string;
+    TradeName?: string;
+    ModuleID?: string;
+    Keyword?: string;
+    Status?: string;
+    DateCriteria?: string;
+    DateRange?: string;
+    StartDate?: string;
+    EndDate?: string;
 
 }
 
@@ -86,6 +103,10 @@ export class SRModuleGrid {
     private readonly ChooseClmnCancelBtn: Locator;
     private readonly ChooseClmnProceedBtn: Locator;
     private readonly ModuleSlct: Locator;
+    private readonly AllSearchFields: Locator;
+    private readonly AllDisableSearchFields: Locator;
+
+
 
     constructor(page: Page) {
         this.page = page;
@@ -98,6 +119,8 @@ export class SRModuleGrid {
 
         //Search Criteria fields
         this.SearcCriteriaExpandIcon = this.page.locator('[class="accordion-head accordion-head2"] .plusminus2');
+        this.AllSearchFields = this.page.locator('.inputrow-four-2 label'); //List of locators
+        this.AllDisableSearchFields = this.page.locator('.inputrow-four-2 .inputrow:has([disabled="disabled"]) .field-lable')//List of locators
         this.SCMNameTxt = this.page.locator('#txtModuleName');
         this.SCSysModIDTxt = this.page.locator('#txtModuleID');
         this.SCKeywordtxt = this.page.locator('#txtSearchTags');
@@ -163,6 +186,83 @@ export class SRModuleGrid {
         this.ChooseClmnProceedBtn = this.page.locator('[data-ng-click="SpecificOkClick()"]');
 
     }
+    //******************************Search Criteria*************************************/
+
+    //expand Search Criteria and validate all Search fields were present or not
+
+    async AvailableSearchFields(): Promise<string[]> {
+        await this.SRModuleCreation();
+        await visible40(this.ModuleSlct)
+        await this.SearcCriteriaExpandIcon.click();
+        const Allfields: Locator[] = await this.AllSearchFields.all();
+        const Fields: string[] = [];
+        for (const field of Allfields) {
+            Fields.push((await field.innerText()).trim());
+        }
+        return Fields;
+    }
+
+    async AvailableDisabledSearchFields(): Promise<string[]> {
+        await this.SRModuleCreation();
+        await visible40(this.ModuleSlct)
+        await this.SearcCriteriaExpandIcon.click();
+        const AllDisableFields = await this.AllDisableSearchFields.all();
+        const DisableFields: string[] = [];
+        for (const dfields of AllDisableFields) {
+            DisableFields.push((await dfields.innerText()).trim());
+        }
+        return DisableFields;
+    }
+
+    async AllSearchActionDDT() {
+        await this.SRModuleCreation();
+        await visible40(this.ModuleSlct)
+        await this.SearcCriteriaExpandIcon.click();
+        DDT = new Testdatacalls();
+        const rows = await DDT.CSVreader<searchCriteria>("datadrivenSearchCriteria.csv");
+        for (const row of rows) {
+            await this.SearchValues(row);
+        }
+        await this.SearchBtn.click();
+        await this.ClearBtn.click();
+
+    }
+
+    async SearchValues(row: searchCriteria) {
+        if (row.ModuleName) {
+            await this.SCMNameTxt.fill(row.ModuleName);
+        }
+
+        if(row.SystemModuleID){
+            await this.SCSysModIDTxt.fill(row.SystemModuleID);
+        }
+        if(row.ModuleCategory){
+            await this.SCModCatDD.selectOption(row.ModuleCategory);
+        }
+        
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //******************************Customization Table**************************//
 
     //Validating Grid headings based on Customizing Table
     async CustomizationTableComparision(): Promise<boolean> {
@@ -203,9 +303,12 @@ export class SRModuleGrid {
         const rows = await DDT.CSVreader<CustomizeGridRow>("datadrivenCustomizationGrid.csv");
         const results: boolean[] = [];
         for (const row of rows) {
-           const result =  await this.CustomizationtableSelectionComparision(row);
-           results.push(result);
+            const result = await this.CustomizationtableSelectionComparision(row);
+            results.push(result);
         }
+        await this.CustomizeTableIcon.click();
+        await this.RestBtn.click();
+        await this.Save_CloseBtn.click();
         return results.every(r => r === true);
 
     }
@@ -251,7 +354,7 @@ export class SRModuleGrid {
 
 
 
-    //******************************************************************************************* */
+    //********************************************************************************************/
 
     // Search Method
     async SRModuleSearchField(moduleName: string = data.SRModule.Name, moduleID?: string, keyword: string = data.SRModule.Keyword) {
@@ -277,7 +380,7 @@ export class SRModuleGrid {
     }
 
     async SearchModules(moduleName: string = data.SRModule.Name, keyword: string = data.SRModule.Keyword) {
-        await this.SRModuleSearchField(moduleName,undefined, keyword);
+        await this.SRModuleSearchField(moduleName, undefined, keyword);
         return await this.ModuleRows.count();
     }
 
