@@ -7,7 +7,9 @@ import * as data from "../../test-data/Credentials.json";
 
 let page: Page;
 
-test('Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria', async ({ browser }) => {
+test(`Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria`, 
+    {tag:'@CM_Independent'},
+    async ({ browser }) => {
     page = await browser.newPage();
     const LoggingIn = new Login(page);
     await LoggingIn.gotoLogInPage();
@@ -15,8 +17,8 @@ test('Verify with creating a SR MOdule with mandatory data and publiching it thr
     const SRM = new srModules(page);
     await SRM.SRModuleCreation();
     const SRG = new SRModuleGrid(page);
-    const availableModules = SRG.SearchModules();
-    expect(availableModules).toBe(3);
+    const availableModules = await SRG.SearchModules();
+    expect(availableModules).toBe(6);
     await LoggingIn.Signingout();
 
 })

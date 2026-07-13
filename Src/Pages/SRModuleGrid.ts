@@ -176,6 +176,7 @@ export class SRModuleGrid {
 
     async CustomizationtableDefaultComparision() {
         //await this.SRModuleCreation();
+        await visible40(this.ModuleSlct);
         await this.CustomizeTableIcon.click();
         await this.ChooseClmsBtn.click();
         const Tochecklist = await this.AvailableClmslist.all();
@@ -276,7 +277,7 @@ export class SRModuleGrid {
     }
 
     async SearchModules(moduleName: string = data.SRModule.Name, keyword: string = data.SRModule.Keyword) {
-        await this.SRModuleSearchField(moduleName, undefined, keyword);
+        await this.SRModuleSearchField(moduleName,undefined, keyword);
         return await this.ModuleRows.count();
     }
 

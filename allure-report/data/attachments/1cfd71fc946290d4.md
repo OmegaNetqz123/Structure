@@ -1,0 +1,915 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: CM\SRModuleSearch.spec.ts >> Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria
+- Location: Src\tests\CM\SRModuleSearch.spec.ts:11:5
+
+# Error details
+
+```
+Error: expect(received).toBeTruthy()
+
+Received: false
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - textbox [ref=e4]
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - heading [level=1] [ref=e7]:
+          - generic [ref=e8]:
+            - img [ref=e10]
+            - img [ref=e11]
+        - generic [ref=e12]:
+          - list:
+            - listitem [ref=e13]:
+              - generic [ref=e14]: Monday, July 13, 2026
+            - listitem [ref=e15]:
+              - list:
+                - listitem [ref=e16] [cursor=pointer]:
+                  - img "manuser" [ref=e18]
+                  - link "vani" [ref=e19]:
+                    - /url: "#"
+                    - text: vani
+            - listitem [ref=e21]:
+              - list:
+                - listitem [ref=e22] [cursor=pointer]:
+                  - link "Organization autotest" [ref=e23]:
+                    - /url: "#"
+                    - text: Organization
+                    - strong [ref=e24]: autotest
+            - listitem [ref=e25]:
+              - list:
+                - listitem [ref=e26] [cursor=pointer]:
+                  - link "Primary Site Redx" [ref=e27]:
+                    - /url: "#"
+                    - text: Primary Site
+                    - strong [ref=e28]: Redx
+            - listitem [ref=e29]:
+              - list:
+                - listitem [ref=e30] [cursor=pointer]:
+                  - link "Setup" [ref=e31]:
+                    - /url: "#"
+                    - img [ref=e32]
+            - listitem [ref=e33]:
+              - link "Notifications&Reminders" [ref=e34] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e35]
+            - listitem [ref=e37]:
+              - link "Help" [ref=e38] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e39]
+            - listitem [ref=e40]:
+              - list:
+                - listitem [ref=e41] [cursor=pointer]:
+                  - link "Sign Out" [ref=e42]:
+                    - /url: "#"
+                    - img [ref=e43]
+      - navigation [ref=e44]:
+        - list [ref=e45]:
+          - listitem [ref=e46]:
+            - link [ref=e47] [cursor=pointer]:
+              - /url: Home.aspx
+              - img [ref=e48]
+          - listitem [ref=e49]:
+            - link "Inbox" [ref=e50] [cursor=pointer]:
+              - /url: MyInbox.aspx
+          - listitem [ref=e51]:
+            - link "Case Management" [ref=e52] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e53]:
+            - link "Case Query" [ref=e54] [cursor=pointer]:
+              - /url: CaseQuery.aspx
+          - listitem [ref=e55]:
+            - link "Utilities" [ref=e56] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e57]:
+            - link "Transmissions" [ref=e58] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e59]:
+            - link "Browse Content" [ref=e60] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e61]:
+            - link "QA" [ref=e62] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e63]:
+            - link "Analytics" [ref=e64] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e65]:
+          - link "Recent Cases" [ref=e67] [cursor=pointer]:
+            - /url: "#"
+          - generic [ref=e68]: + New Case
+    - text: "* * *"
+    - generic [ref=e71]:
+      - generic [ref=e72]: Notifications & Reminders
+      - generic [ref=e73]:
+        - list:
+          - listitem [ref=e74]:
+            - link "Cancel" [ref=e75] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e76]:
+        - list [ref=e77]:
+          - listitem [ref=e78]:
+            - link [ref=e79] [cursor=pointer]:
+              - /url: "#tabinr1"
+          - listitem [ref=e80]:
+            - link [ref=e81] [cursor=pointer]:
+              - /url: "#tabinr2"
+        - generic [ref=e85]:
+          - list:
+            - listitem
+    - generic [ref=e88]:
+      - generic [ref=e89]: Notification
+      - generic [ref=e90]:
+        - list:
+          - listitem [ref=e91]:
+            - link "Dismiss" [ref=e92] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e93]:
+            - link "Cancel" [ref=e94] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - generic [ref=e97]:
+            - strong [ref=e99]: "ID :"
+            - generic:
+              - link:
+                - /url: "#"
+          - strong [ref=e102]: "Date & Time :"
+          - strong [ref=e105]: "Organization :"
+          - strong [ref=e108]: "Site :"
+          - generic [ref=e109]:
+            - strong
+        - generic [ref=e110]:
+          - generic [ref=e111]: Message
+          - textbox [ref=e112]
+    - generic [ref=e115]:
+      - generic [ref=e116]: Reminders
+      - generic [ref=e117]:
+        - list:
+          - listitem
+          - listitem
+          - listitem [ref=e118]:
+            - link "Clear" [ref=e119] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=e120]:
+            - link "Cancel" [ref=e121] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e122]:
+        - generic [ref=e124]:
+          - strong [ref=e127]: "Organization :"
+          - strong [ref=e130]: "Site :"
+          - strong [ref=e133]: "Category :"
+          - strong [ref=e136]: "Scheduled On :"
+          - strong [ref=e139]: "Status :"
+          - strong [ref=e142]: "Overdue :"
+        - generic [ref=e143]:
+          - strong [ref=e145]: Message
+          - textbox [ref=e146]
+    - generic [ref=e148]:
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - link "CM Console >" [ref=e151] [cursor=pointer]:
+            - /url: CMHome.aspx
+          - text: SR Module Library
+        - generic [ref=e152]:
+          - list:
+            - listitem [ref=e153]:
+              - link "Create SR Module" [ref=e154] [cursor=pointer]:
+                - /url: SRModule.aspx?ID=&Mode=N
+      - generic [ref=e155]:
+        - generic [ref=e157]:
+          - generic "Expand" [ref=e158] [cursor=pointer]
+          - generic [ref=e159]: Search Criteria
+          - generic [ref=e160]:
+            - list:
+              - listitem [ref=e161]:
+                - link "Search" [ref=e162] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e163]:
+                - link "Clear" [ref=e164] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e165]:
+                - link "View All" [ref=e166] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e167]:
+                - link "Save" [ref=e168] [cursor=pointer]:
+                  - /url: "#"
+        - textbox [ref=e169]
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]: "Displaying: 1-13 of 13 Items"
+            - generic [ref=e173]:
+              - list:
+                - listitem
+                - listitem [ref=e174]:
+                  - img "maximize" [ref=e176]
+                - listitem [ref=e177]:
+                  - img "maximize" [ref=e179]
+                - listitem [ref=e180]:
+                  - combobox [ref=e182]:
+                    - option "Sort By" [selected]
+                    - option "Created Date"
+                    - option "Last Modified Date"
+                    - option "Approved Date"
+                    - option "Published Date"
+                    - option "Archived Date"
+                    - option "Module Name"
+                    - option "Module ID"
+                    - option "System ID"
+                    - option "Version"
+                - listitem [ref=e183] [cursor=pointer]:
+                  - img "img" [ref=e184]
+                  - img "img" [ref=e185]
+                - listitem
+          - generic [ref=e186]:
+            - table [ref=e187]:
+              - rowgroup [ref=e188]:
+                - row "Module Name Latest Version Status CI/CO CO User System Module ID Module Category Created Date Last Modified Date Approved Date Published Date Archived Date Module ID" [ref=e189]:
+                  - columnheader [ref=e190]:
+                    - generic [ref=e191] [cursor=pointer]:
+                      - generic:
+                        - checkbox
+                  - columnheader "Module Name" [ref=e193]
+                  - columnheader "Latest Version" [ref=e194]
+                  - columnheader "Status" [ref=e195]
+                  - columnheader "CI/CO" [ref=e196]
+                  - columnheader "CO User" [ref=e197]
+                  - columnheader "System Module ID" [ref=e198]
+                  - columnheader "Module Category" [ref=e199]
+                  - columnheader "Created Date" [ref=e200]
+                  - columnheader "Last Modified Date" [ref=e201]
+                  - columnheader "Approved Date" [ref=e202]
+                  - columnheader "Published Date" [ref=e203]
+                  - columnheader "Archived Date" [ref=e204]
+                  - columnheader "Module ID" [ref=e205]
+                  - columnheader [ref=e206]
+            - table [ref=e208]:
+              - rowgroup [ref=e209]:
+                - row "25-5-26-Module for global document 1.1 Published CI att-00009 25-May-2026 25-May-2026 25-May-2026" [ref=e210]:
+                  - cell [ref=e211]:
+                    - generic [ref=e212] [cursor=pointer]:
+                      - checkbox
+                  - cell "25-5-26-Module for global document" [ref=e214]
+                  - cell "1.1" [ref=e215]
+                  - cell "Published" [ref=e216]
+                  - cell "CI" [ref=e217]
+                  - cell [ref=e218]
+                  - cell "att-00009" [ref=e219]
+                  - cell [ref=e220]
+                  - cell "25-May-2026" [ref=e221]
+                  - cell "25-May-2026" [ref=e222]
+                  - cell [ref=e223]
+                  - cell "25-May-2026" [ref=e224]
+                  - cell [ref=e225]
+                  - cell [ref=e226]
+                  - cell [ref=e227]:
+                    - list
+                - row "27-10-25-Sr Module 1 1.1 Published CI att-00003 26-Oct-2025 25-May-2026 25-May-2026" [ref=e228]:
+                  - cell [ref=e229]:
+                    - generic [ref=e230] [cursor=pointer]:
+                      - checkbox
+                  - cell "27-10-25-Sr Module 1" [ref=e232]
+                  - cell "1.1" [ref=e233]
+                  - cell "Published" [ref=e234]
+                  - cell "CI" [ref=e235]
+                  - cell [ref=e236]
+                  - cell "att-00003" [ref=e237]
+                  - cell [ref=e238]
+                  - cell "26-Oct-2025" [ref=e239]
+                  - cell "25-May-2026" [ref=e240]
+                  - cell [ref=e241]
+                  - cell "25-May-2026" [ref=e242]
+                  - cell [ref=e243]
+                  - cell [ref=e244]
+                  - cell [ref=e245]:
+                    - list
+                - row "27-10-25-Sr Module 2 1.0 Published CI att-00004 26-Oct-2025 26-Oct-2025 26-Oct-2025" [ref=e246]:
+                  - cell [ref=e247]:
+                    - generic [ref=e248] [cursor=pointer]:
+                      - checkbox
+                  - cell "27-10-25-Sr Module 2" [ref=e250]
+                  - cell "1.0" [ref=e251]
+                  - cell "Published" [ref=e252]
+                  - cell "CI" [ref=e253]
+                  - cell [ref=e254]
+                  - cell "att-00004" [ref=e255]
+                  - cell [ref=e256]
+                  - cell "26-Oct-2025" [ref=e257]
+                  - cell "26-Oct-2025" [ref=e258]
+                  - cell [ref=e259]
+                  - cell "26-Oct-2025" [ref=e260]
+                  - cell [ref=e261]
+                  - cell [ref=e262]
+                  - cell [ref=e263]:
+                    - list
+                - row "Module1 1.0 Pending CI att-00079 Auto 1 13-Jul-2026 13-Jul-2026 ID001" [ref=e264]:
+                  - cell [ref=e265]:
+                    - generic [ref=e266] [cursor=pointer]:
+                      - checkbox
+                  - cell "Module1" [ref=e268]
+                  - cell "1.0" [ref=e269]
+                  - cell "Pending" [ref=e270]
+                  - cell "CI" [ref=e271]
+                  - cell [ref=e272]
+                  - cell "att-00079" [ref=e273]
+                  - cell "Auto 1" [ref=e274]
+                  - cell "13-Jul-2026" [ref=e275]
+                  - cell "13-Jul-2026" [ref=e276]
+                  - cell [ref=e277]
+                  - cell [ref=e278]
+                  - cell [ref=e279]
+                  - cell "ID001" [ref=e280]
+                  - cell [ref=e281]:
+                    - list
+                - row "Module2 1.0 Pending CI att-00080 Auto1768980250560 13-Jul-2026 13-Jul-2026 ID002" [ref=e282]:
+                  - cell [ref=e283]:
+                    - generic [ref=e284] [cursor=pointer]:
+                      - checkbox
+                  - cell "Module2" [ref=e286]
+                  - cell "1.0" [ref=e287]
+                  - cell "Pending" [ref=e288]
+                  - cell "CI" [ref=e289]
+                  - cell [ref=e290]
+                  - cell "att-00080" [ref=e291]
+                  - cell "Auto1768980250560" [ref=e292]
+                  - cell "13-Jul-2026" [ref=e293]
+                  - cell "13-Jul-2026" [ref=e294]
+                  - cell [ref=e295]
+                  - cell [ref=e296]
+                  - cell [ref=e297]
+                  - cell "ID002" [ref=e298]
+                  - cell [ref=e299]:
+                    - list
+                - row "Module3 1.0 Pending CI att-00081 module 13-Jul-2026 13-Jul-2026" [ref=e300]:
+                  - cell [ref=e301]:
+                    - generic [ref=e302] [cursor=pointer]:
+                      - checkbox
+                  - cell "Module3" [ref=e304]
+                  - cell "1.0" [ref=e305]
+                  - cell "Pending" [ref=e306]
+                  - cell "CI" [ref=e307]
+                  - cell [ref=e308]
+                  - cell "att-00081" [ref=e309]
+                  - cell "module" [ref=e310]
+                  - cell "13-Jul-2026" [ref=e311]
+                  - cell "13-Jul-2026" [ref=e312]
+                  - cell [ref=e313]
+                  - cell [ref=e314]
+                  - cell [ref=e315]
+                  - cell [ref=e316]
+                  - cell [ref=e317]:
+                    - list
+                - row "Module4 1.0 Pending CI att-00082 13-Jul-2026 13-Jul-2026" [ref=e318]:
+                  - cell [ref=e319]:
+                    - generic [ref=e320] [cursor=pointer]:
+                      - checkbox
+                  - cell "Module4" [ref=e322]
+                  - cell "1.0" [ref=e323]
+                  - cell "Pending" [ref=e324]
+                  - cell "CI" [ref=e325]
+                  - cell [ref=e326]
+                  - cell "att-00082" [ref=e327]
+                  - cell [ref=e328]
+                  - cell "13-Jul-2026" [ref=e329]
+                  - cell "13-Jul-2026" [ref=e330]
+                  - cell [ref=e331]
+                  - cell [ref=e332]
+                  - cell [ref=e333]
+                  - cell [ref=e334]
+                  - cell [ref=e335]:
+                    - list
+                - row "Module5 1.0 Pending CI att-00083 13-Jul-2026 13-Jul-2026" [ref=e336]:
+                  - cell [ref=e337]:
+                    - generic [ref=e338] [cursor=pointer]:
+                      - checkbox
+                  - cell "Module5" [ref=e340]
+                  - cell "1.0" [ref=e341]
+                  - cell "Pending" [ref=e342]
+                  - cell "CI" [ref=e343]
+                  - cell [ref=e344]
+                  - cell "att-00083" [ref=e345]
+                  - cell [ref=e346]
+                  - cell "13-Jul-2026" [ref=e347]
+                  - cell "13-Jul-2026" [ref=e348]
+                  - cell [ref=e349]
+                  - cell [ref=e350]
+                  - cell [ref=e351]
+                  - cell [ref=e352]
+                  - cell [ref=e353]:
+                    - list
+                - row "Module6 1.0 Pending CI att-00084 Auto 1 13-Jul-2026 13-Jul-2026 ID001" [ref=e354]:
+                  - cell [ref=e355]:
+                    - generic [ref=e356] [cursor=pointer]:
+                      - checkbox
+                  - cell "Module6" [ref=e358]
+                  - cell "1.0" [ref=e359]
+                  - cell "Pending" [ref=e360]
+                  - cell "CI" [ref=e361]
+                  - cell [ref=e362]
+                  - cell "att-00084" [ref=e363]
+                  - cell "Auto 1" [ref=e364]
+                  - cell "13-Jul-2026" [ref=e365]
+                  - cell "13-Jul-2026" [ref=e366]
+                  - cell [ref=e367]
+                  - cell [ref=e368]
+                  - cell [ref=e369]
+                  - cell "ID001" [ref=e370]
+                  - cell [ref=e371]:
+                    - list
+                - row "ObEBt 1.0 Pending CI att-00002 06-Jan-2025 06-Jan-2025" [ref=e372]:
+                  - cell [ref=e373]:
+                    - generic [ref=e374] [cursor=pointer]:
+                      - checkbox
+                  - cell "ObEBt" [ref=e376]
+                  - cell "1.0" [ref=e377]
+                  - cell "Pending" [ref=e378]
+                  - cell "CI" [ref=e379]
+                  - cell [ref=e380]
+                  - cell "att-00002" [ref=e381]
+                  - cell [ref=e382]
+                  - cell "06-Jan-2025" [ref=e383]
+                  - cell "06-Jan-2025" [ref=e384]
+                  - cell [ref=e385]
+                  - cell [ref=e386]
+                  - cell [ref=e387]
+                  - cell [ref=e388]
+                  - cell [ref=e389]:
+                    - list
+                - row "ObEBtfghjm, 1.0 Pending CI att-00005 17-Dec-2025 17-Dec-2025" [ref=e390]:
+                  - cell [ref=e391]:
+                    - generic [ref=e392] [cursor=pointer]:
+                      - checkbox
+                  - cell "ObEBtfghjm," [ref=e394]
+                  - cell "1.0" [ref=e395]
+                  - cell "Pending" [ref=e396]
+                  - cell "CI" [ref=e397]
+                  - cell [ref=e398]
+                  - cell "att-00005" [ref=e399]
+                  - cell [ref=e400]
+                  - cell "17-Dec-2025" [ref=e401]
+                  - cell "17-Dec-2025" [ref=e402]
+                  - cell [ref=e403]
+                  - cell [ref=e404]
+                  - cell [ref=e405]
+                  - cell [ref=e406]
+                  - cell [ref=e407]:
+                    - list
+                - row "SR Module 1.0 Pending CI att-00007 module 22-Jan-2026 22-Jan-2026" [ref=e408]:
+                  - cell [ref=e409]:
+                    - generic [ref=e410] [cursor=pointer]:
+                      - checkbox
+                  - cell "SR Module" [ref=e412]
+                  - cell "1.0" [ref=e413]
+                  - cell "Pending" [ref=e414]
+                  - cell "CI" [ref=e415]
+                  - cell [ref=e416]
+                  - cell "att-00007" [ref=e417]
+                  - cell "module" [ref=e418]
+                  - cell "22-Jan-2026" [ref=e419]
+                  - cell "22-Jan-2026" [ref=e420]
+                  - cell [ref=e421]
+                  - cell [ref=e422]
+                  - cell [ref=e423]
+                  - cell [ref=e424]
+                  - cell [ref=e425]:
+                    - list
+                - row "SR Module Review 1 1.0 Pending CI att-00008 module 14-May-2026 14-May-2026" [ref=e426]:
+                  - cell [ref=e427]:
+                    - generic [ref=e428] [cursor=pointer]:
+                      - checkbox
+                  - cell "SR Module Review 1" [ref=e430]
+                  - cell "1.0" [ref=e431]
+                  - cell "Pending" [ref=e432]
+                  - cell "CI" [ref=e433]
+                  - cell [ref=e434]
+                  - cell "att-00008" [ref=e435]
+                  - cell "module" [ref=e436]
+                  - cell "14-May-2026" [ref=e437]
+                  - cell "14-May-2026" [ref=e438]
+                  - cell [ref=e439]
+                  - cell [ref=e440]
+                  - cell [ref=e441]
+                  - cell [ref=e442]
+                  - cell [ref=e443]:
+                    - list
+      - generic [ref=e445]:
+        - generic [ref=e446]:
+          - generic [ref=e447]: Customize Table
+          - generic [ref=e448]:
+            - list:
+              - listitem [ref=e449]:
+                - link "Reset to Default" [ref=e450] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e451]:
+                - link "Save & Close" [ref=e452] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e453]:
+                - link "Cancel" [active] [ref=e454] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e455]:
+          - generic [ref=e456]: Selected Table Columns
+          - link "Choose Columns" [ref=e457] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e458]:
+          - generic [ref=e459]:
+            - generic [ref=e461] [cursor=pointer]: Module Name
+            - generic [ref=e462]:
+              - link "Move to Bottom" [ref=e463] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e464]
+              - link:
+                - /url: "#"
+              - link "Move Down" [ref=e465] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e466]
+              - link:
+                - /url: "#"
+          - generic [ref=e467]:
+            - generic [ref=e469] [cursor=pointer]: Latest Version
+            - generic [ref=e470]:
+              - link "Move to Bottom" [ref=e471] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e472]
+              - link "Move to Top" [ref=e473] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e474]
+              - link "Move Down" [ref=e475] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e476]
+              - link "Move Up" [ref=e477] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e478]
+          - generic [ref=e479]:
+            - generic [ref=e481] [cursor=pointer]: Status
+            - generic [ref=e482]:
+              - link "Move to Bottom" [ref=e483] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e484]
+              - link "Move to Top" [ref=e485] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e486]
+              - link "Move Down" [ref=e487] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e488]
+              - link "Move Up" [ref=e489] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e490]
+          - generic [ref=e491]:
+            - generic [ref=e493] [cursor=pointer]: CI/CO
+            - generic [ref=e494]:
+              - link "Move to Bottom" [ref=e495] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e496]
+              - link "Move to Top" [ref=e497] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e498]
+              - link "Move Down" [ref=e499] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e500]
+              - link "Move Up" [ref=e501] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e502]
+          - generic [ref=e503]:
+            - generic [ref=e505] [cursor=pointer]: CO User
+            - generic [ref=e506]:
+              - link "Move to Bottom" [ref=e507] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e508]
+              - link "Move to Top" [ref=e509] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e510]
+              - link "Move Down" [ref=e511] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e512]
+              - link "Move Up" [ref=e513] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e514]
+          - generic [ref=e515]:
+            - generic [ref=e517] [cursor=pointer]: System Module ID
+            - generic [ref=e518]:
+              - link "Move to Bottom" [ref=e519] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e520]
+              - link "Move to Top" [ref=e521] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e522]
+              - link "Move Down" [ref=e523] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e524]
+              - link "Move Up" [ref=e525] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e526]
+          - generic [ref=e527]:
+            - generic [ref=e529] [cursor=pointer]: Module Category
+            - generic [ref=e530]:
+              - link "Move to Bottom" [ref=e531] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e532]
+              - link "Move to Top" [ref=e533] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e534]
+              - link "Move Down" [ref=e535] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e536]
+              - link "Move Up" [ref=e537] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e538]
+          - generic [ref=e539]:
+            - generic [ref=e541] [cursor=pointer]: Created Date
+            - generic [ref=e542]:
+              - link "Move to Bottom" [ref=e543] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e544]
+              - link "Move to Top" [ref=e545] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e546]
+              - link "Move Down" [ref=e547] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e548]
+              - link "Move Up" [ref=e549] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e550]
+          - generic [ref=e551]:
+            - generic [ref=e553] [cursor=pointer]: Last Modified Date
+            - generic [ref=e554]:
+              - link "Move to Bottom" [ref=e555] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e556]
+              - link "Move to Top" [ref=e557] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e558]
+              - link "Move Down" [ref=e559] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e560]
+              - link "Move Up" [ref=e561] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e562]
+          - generic [ref=e563]:
+            - generic [ref=e565] [cursor=pointer]: Approved Date
+            - generic [ref=e566]:
+              - link "Move to Bottom" [ref=e567] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e568]
+              - link "Move to Top" [ref=e569] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e570]
+              - link "Move Down" [ref=e571] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e572]
+              - link "Move Up" [ref=e573] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e574]
+          - generic [ref=e575]:
+            - generic [ref=e577] [cursor=pointer]: Published Date
+            - generic [ref=e578]:
+              - link "Move to Bottom" [ref=e579] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e580]
+              - link "Move to Top" [ref=e581] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e582]
+              - link "Move Down" [ref=e583] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e584]
+              - link "Move Up" [ref=e585] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e586]
+          - generic [ref=e587]:
+            - generic [ref=e589] [cursor=pointer]: Archived Date
+            - generic [ref=e590]:
+              - link "Move to Bottom" [ref=e591] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Bottom" [ref=e592]
+              - link "Move to Top" [ref=e593] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e594]
+              - link "Move Down" [ref=e595] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Down" [ref=e596]
+              - link "Move Up" [ref=e597] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e598]
+          - generic [ref=e599]:
+            - generic [ref=e601] [cursor=pointer]: Module ID
+            - generic [ref=e602]:
+              - link [ref=e603] [cursor=pointer]:
+                - /url: "#"
+              - link "Move to Top" [ref=e604] [cursor=pointer]:
+                - /url: "#"
+                - img "Move to Top" [ref=e605]
+              - link [ref=e606] [cursor=pointer]:
+                - /url: "#"
+              - link "Move Up" [ref=e607] [cursor=pointer]:
+                - /url: "#"
+                - img "Move Up" [ref=e608]
+      - generic [ref=e610]:
+        - generic [ref=e611]:
+          - generic [ref=e612]: Choose Columns
+          - generic [ref=e613]:
+            - list:
+              - listitem [ref=e614]:
+                - link "Proceed" [ref=e615] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e616]:
+                - link "Cancel" [ref=e617] [cursor=pointer]:
+                  - /url: "#"
+        - generic [ref=e618]: Clicking on Proceed after selecting/unselecting any check boxes will reflect the same order in the Selected Table Columns list.
+        - generic [ref=e620] [cursor=pointer]:
+          - text: Select All
+          - checkbox "Select All" [checked]
+        - generic [ref=e622]:
+          - generic [ref=e625] [cursor=pointer]:
+            - text: Module Name
+            - checkbox "Module Name" [checked]
+          - generic [ref=e629] [cursor=pointer]:
+            - text: Latest Version
+            - checkbox "Latest Version" [checked]
+          - generic [ref=e633] [cursor=pointer]:
+            - text: Status
+            - checkbox "Status" [checked]
+          - generic [ref=e637] [cursor=pointer]:
+            - text: CI/CO
+            - checkbox "CI/CO" [checked]
+          - generic [ref=e641] [cursor=pointer]:
+            - text: CO User
+            - checkbox "CO User" [checked]
+          - generic [ref=e645] [cursor=pointer]:
+            - text: System Module ID
+            - checkbox "System Module ID" [checked]
+          - generic [ref=e649] [cursor=pointer]:
+            - text: Module Category
+            - checkbox "Module Category" [checked]
+          - generic [ref=e653] [cursor=pointer]:
+            - text: Created Date
+            - checkbox "Created Date" [checked]
+          - generic [ref=e657] [cursor=pointer]:
+            - text: Last Modified Date
+            - checkbox "Last Modified Date" [checked]
+          - generic [ref=e661] [cursor=pointer]:
+            - text: Approved Date
+            - checkbox "Approved Date" [checked]
+          - generic [ref=e665] [cursor=pointer]:
+            - text: Published Date
+            - checkbox "Published Date" [checked]
+          - generic [ref=e669] [cursor=pointer]:
+            - text: Archived Date
+            - checkbox "Archived Date" [checked]
+          - generic [ref=e673] [cursor=pointer]:
+            - text: Module ID
+            - checkbox "Module ID" [checked]
+      - generic [ref=e677]:
+        - generic [ref=e678]: Archive Module
+        - generic [ref=e679]:
+          - list:
+            - listitem [ref=e680]:
+              - link "Confirm" [ref=e681] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e682]:
+              - link "Cancel" [ref=e683] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e684]:
+          - generic [ref=e685]:
+            - generic [ref=e686]:
+              - generic [ref=e687]: User Id
+              - textbox [disabled] [ref=e688]
+            - generic [ref=e689]:
+              - generic [ref=e690]: Password
+              - textbox [ref=e691]
+          - generic [ref=e692]:
+            - generic [ref=e693]: Reason for Archiving Module
+            - textbox [ref=e694]
+      - generic [ref=e697]:
+        - generic [ref=e698]: Approved For Use
+        - generic [ref=e699]:
+          - list:
+            - listitem [ref=e700]:
+              - link "Confirm" [ref=e701] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e702]:
+              - link "Cancel" [ref=e703] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e704]:
+          - generic [ref=e705]:
+            - generic [ref=e706]:
+              - generic [ref=e707]: User Id
+              - textbox [disabled] [ref=e708]
+            - generic [ref=e709]:
+              - generic [ref=e710]: Password
+              - textbox [ref=e711]
+          - generic [ref=e712]:
+            - generic [ref=e713]: Reason for Approving Module
+            - textbox [ref=e714]
+      - generic [ref=e717]:
+        - generic [ref=e718]: Delete Module
+        - generic [ref=e719]:
+          - list:
+            - listitem [ref=e720]:
+              - link "Confirm" [ref=e721] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e722]:
+              - link "Cancel" [ref=e723] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e724]:
+          - generic [ref=e725]:
+            - generic [ref=e726]:
+              - generic [ref=e727]: User Id
+              - textbox [disabled] [ref=e728]
+            - generic [ref=e729]:
+              - generic [ref=e730]: Password
+              - textbox [ref=e731]
+          - generic [ref=e732]:
+            - generic [ref=e733]: Reason for Deleting Module
+            - textbox [ref=e734]
+      - generic [ref=e737]:
+        - generic [ref=e738]: Published For Use
+        - generic [ref=e739]:
+          - list:
+            - listitem [ref=e740]:
+              - link "Confirm" [ref=e741] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e742]:
+              - link "Cancel" [ref=e743] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e744]:
+          - generic [ref=e745]:
+            - generic [ref=e746]:
+              - generic [ref=e747]: User Id
+              - textbox [disabled] [ref=e748]
+            - generic [ref=e749]:
+              - generic [ref=e750]: Password
+              - textbox [ref=e751]
+          - generic [ref=e752]:
+            - generic [ref=e753]:
+              - generic [ref=e754]: System Version
+              - textbox [disabled] [ref=e755]
+            - generic [ref=e756]:
+              - generic [ref=e757]: Org Version
+              - textbox [ref=e758]
+          - generic [ref=e759]:
+            - generic [ref=e760]: Reason for Publishing Module
+            - textbox [ref=e761]
+      - generic [ref=e764]:
+        - generic [ref=e765]: Check-Out Module(s)
+        - generic [ref=e766]:
+          - list:
+            - listitem [ref=e767]:
+              - link "Confirm" [ref=e768] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e769]:
+              - link "Cancel" [ref=e770] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e771]:
+          - generic [ref=e773]: Module(s) will be checked–out to the selected user.
+          - generic [ref=e774]:
+            - generic [ref=e775]:
+              - generic [ref=e776]: Select User *
+              - combobox [ref=e777]:
+                - option [selected]
+                - option "--Select--"
+            - generic [ref=e778]:
+              - generic [ref=e779]: Reason for Check-Out
+              - textbox [ref=e780]
+  - status [ref=e781]
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect, Page } from "@playwright/test";
+  2  | import { srModules } from "../../Pages/SRModule";
+  3  | import { SRModuleGrid } from "../../Pages/SRModuleGrid";
+  4  | import { Login } from "../../Pages/LogInPage";
+  5  | import * as data from "../../test-data/Credentials.json";
+  6  | import { clear } from "console";
+  7  | 
+  8  | 
+  9  | let page: Page;
+  10 | 
+  11 | test(`Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria`,
+  12 |     {tag: '@CM_Independent'},
+  13 |     async ({ browser }) => {
+  14 |         page = await browser.newPage();
+  15 |         const LoggingIn = new Login(page);
+  16 |         await LoggingIn.gotoLogInPage();
+  17 |         await LoggingIn.LogIntoApplication(data["Credentials 2"].UserID, data["Credentials 2"].Password);
+  18 |         const SRG = new SRModuleGrid(page);
+  19 |         const ActualResult: boolean = await SRG.CustomizationTableComparision();
+  20 |         const ActualResult1:boolean = await SRG.CustomizationtableDefaultComparision();
+  21 |         expect(ActualResult).toBeTruthy();
+> 22 |         expect(ActualResult1).toBeTruthy();
+     |                               ^ Error: expect(received).toBeTruthy()
+  23 |         const ActualResult2:boolean =await SRG.CustomizeGridDDT();
+  24 |         expect (ActualResult2).toBeTruthy();
+  25 |         await LoggingIn.Signingout();
+  26 |     })
+```

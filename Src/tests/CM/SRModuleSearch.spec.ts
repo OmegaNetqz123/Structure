@@ -8,19 +8,19 @@ import { clear } from "console";
 
 let page: Page;
 
-test('Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria',
+test(`Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria`,
+    {tag: '@CM_Independent'},
     async ({ browser }) => {
         page = await browser.newPage();
         const LoggingIn = new Login(page);
         await LoggingIn.gotoLogInPage();
-        await LoggingIn.LogIntoApplication(data["Credentials 1"].UserID, data["Credentials 1"].Password);
+        await LoggingIn.LogIntoApplication(data["Credentials 2"].UserID, data["Credentials 2"].Password);
         const SRG = new SRModuleGrid(page);
-        // const ActualResult: boolean = await SRG.CustomizationTableComparision();
-        // const ActualResult1:boolean = await SRG.CustomizationtableDefaultComparision();
-        // expect(ActualResult).toBeTruthy();
-        // expect(ActualResult1).toBeTruthy();
+        const ActualResult: boolean = await SRG.CustomizationTableComparision();
+        const ActualResult1:boolean = await SRG.CustomizationtableDefaultComparision();
+        expect(ActualResult).toBeTruthy();
+        expect(ActualResult1).toBeTruthy();
         const ActualResult2:boolean =await SRG.CustomizeGridDDT();
-        await expect (ActualResult2).toBeTruthy();
+        expect (ActualResult2).toBeTruthy();
         await LoggingIn.Signingout();
-
     })

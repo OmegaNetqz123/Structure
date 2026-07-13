@@ -1,7 +1,7 @@
 import { test, expect, Locator } from "@playwright/test"
 import { Login } from "../../Pages/LogInPage";
 import { BrowserManaging } from "../../Pages/BrowserManager";
-import * as data from "../../test-data/LogInCredentials.json";
+import * as data from "../../test-data/Credentials.json";
 
 let browserManager: BrowserManaging;
 let loginPage: Login;

@@ -1,2 +1,3 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","96318","Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria","chromium","2026-07-10","passed","2026-07-10","","CM\SRModuleSearch.spec.ts","",""
+"","96749","Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria","chromium","2026-07-13","passed","2026-07-13","","CM\SRModule.spec.ts","",""
+"","69607","Verify with creating a SR MOdule with mandatory data and publiching it through Search Criteria","chromium","2026-07-13","passed","2026-07-13","","CM\SRModuleSearch.spec.ts","",""
